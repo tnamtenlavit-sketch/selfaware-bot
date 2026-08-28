@@ -27,16 +27,19 @@ STATUS_LIST = [
     "When you tell me that you love me (Oh)"
 ]
 
+current_status_index = 0
+
 @tasks.loop(seconds=4)
 async def change_status():
-    for status in STATUS_LIST:
-        await bot.change_presence(activity=discord.Game(name=status))
-        await asyncio.sleep(4)
+    global current_status_index
+    status = STATUS_LIST[current_status_index]
+    await bot.change_presence(activity=discord.Game(name=status))
+    current_status_index = (current_status_index + 1) % len(STATUS_LIST)
 
 @bot.event
 async def on_ready():
-    print(f"Bot {bot.user} đã kết nối thành công và bắt đầu chạy chữ!")
-    change_status.start()
+    print(f"Bot {bot.user} đã kết nối thành công!")
+    if not change_status.is_running():
+        change_status.start()
 
-# Mã Token của bot (Thay TOKEN_MỚI vào giữa dấu ngoặc)
 bot.run("MTU0Mjg1ODExNzgxMTkyOTExOA.GPSGx0.tv9V9DgldErZhVE8FGxuiyY1rO8TC1U0HDw15U")
