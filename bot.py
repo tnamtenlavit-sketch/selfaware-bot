@@ -44,9 +44,9 @@ async def on_ready():
     if not change_status.is_running():
         change_status.start()
 
-# Web server giả để Render thông cổng PORT thành công
+# Tạo cổng web giả để Render không bao giờ báo lỗi Port
 async def handle(request):
-    return web.Response(text="Bot is running 24/7!")
+    return web.Response(text="Bot online 24/7!")
 
 async def start_server():
     app = web.Application()
