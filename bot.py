@@ -44,4 +44,4 @@ async def change_status():
         await asyncio.sleep(4)
 
 # Mã Token của bot
-bot.run("MTU0Mjg1ODExNzgxMTkyOTExOA.GEAxzl.SPDU0S5y-6unSHtdMaejFtyWnAhZHzt7Ys5Sv0")
+bot.run("MTU0Mjg1ODExNzgxMTkyOTExOA.GPSGx0.tv9V9DgldErZhVE8FGxuiyY1rO8TC1U0HDw15U")
