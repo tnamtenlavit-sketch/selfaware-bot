@@ -1,5 +1,7 @@
 import discord
 from discord.ext import commands, tasks
+from aiohttp import web
+import asyncio
 import os
 
 intents = discord.Intents.default()
@@ -42,4 +44,23 @@ async def on_ready():
     if not change_status.is_running():
         change_status.start()
 
-bot.run(os.getenv("DISCORD_TOKEN"))
+# Web server giả để thông cổng PORT cho Render
+async def handle(request):
+    return web.Response(text="Bot online!")
+
+async def start_server():
+    app = web.Application()
+    app.router.add_get('/', handle)
+    runner = web.AppRunner(app)
+    await runner.setup()
+    port = int(os.environ.get("PORT", 8080))
+    site = web.TCPSite(runner, '0.0.0.0', port)
+    await site.start()
+
+async def main():
+    async with bot:
+        await start_server()
+        await bot.start(os.getenv("DISCORD_TOKEN"))
+
+if __name__ == "__main__":
+    asyncio.run(main())
