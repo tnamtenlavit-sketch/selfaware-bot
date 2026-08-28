@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands, tasks
-import asyncio
+import os
 
 intents = discord.Intents.default()
 bot = commands.Bot(command_prefix="!", intents=intents)
@@ -42,4 +42,4 @@ async def on_ready():
     if not change_status.is_running():
         change_status.start()
 
-bot.run("MTU0Mjg1ODExNzgxMTkyOTExOA.GPSGx0.tv9V9DgldErZhVE8FGxuiyY1rO8TC1U0HDw15U")
+bot.run(os.getenv("DISCORD_TOKEN"))
