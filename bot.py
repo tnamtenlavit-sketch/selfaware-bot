@@ -66,4 +66,4 @@ async def on_ready():
     bot.loop.create_task(change_status())
 
 # --- 3. TOKEN CỦA BOT ---
-bot.run("MTU0Mjg1ODEXnzgXMtkYOTEXOA.G5lIz4.7LEOxC78mii8xPfmrWs10FMp7UckgYZf4kLYBg")
+bot.run("MTU0Mjg1ODExNzgxMTkyOTExOA.GQGjiX.noDFaxMKAtQ_rp4sMpw2oUpoItw8pEiIONerE4")
